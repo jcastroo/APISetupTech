@@ -1,0 +1,22 @@
+{
+  "routes": [
+    { "src": "/(.*)", "dest": "/public/index.php" }
+  ],
+  "env": {
+    "APP_KEY": "@laravel-app-key"
+  },
+  "builds": {
+    "version": 2,
+    "env": {
+      "APP_ENV": "production",
+      "APP_DEBUG": "false",
+      "APP_URL": "https://example.com"
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "command": "npm run production"
+    }
+  }
+}
