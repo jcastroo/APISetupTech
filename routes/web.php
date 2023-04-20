@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Resources\PrecosResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,20 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::post('/calcular-preco', function (Illuminate\Http\Request $request) {
-
-    // obter os dados do formulário
-    $quantidade = $request->input('quantidade');
-    $preco_unitario = $request->input('preco_unitario');
-    $desconto = $request->input('desconto');
-
-    // calcular o preço
-    $preco_total = ($quantidade * $preco_unitario) - $desconto;
-
-    // enviar os dados de volta para o Open Form
-    return response()->json([
-        'preco_total' => $preco_total
-    ]);
+Route::post('/webhook', function (Illuminate\Http\Request $request) {
+    $parameter = $request->input('parameter');
+    $sum = array_sum($parameter);
+    return response()->json(['sum' => $sum]);
 });
+
+
+
+
 

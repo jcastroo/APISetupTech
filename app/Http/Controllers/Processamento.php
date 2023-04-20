@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Http;
 class FormController extends Controller
 {
 
+    protected $myVar = 'Valor inicial da minha variável';
 
     public function submitForm(Request $request)
     {
+
         // obter os dados do formulário
         $quantidade = $request->input('quantidade');
         $preco_unitario = $request->input('preco_unitario');
@@ -30,4 +32,12 @@ class FormController extends Controller
         $preco_total = $response->json('preco_total');
         return view('resultado', compact('preco_total'));
     }
+
+    public function getMyVar()
+    {
+        return $this->myVar;
+    }
+
+    
+
 }
